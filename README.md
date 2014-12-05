@@ -1,1 +1,1 @@
-Manange my servers-info easily.
+Manage my servers-info easily.
