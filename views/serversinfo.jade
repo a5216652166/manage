@@ -1,0 +1,406 @@
+extends index
+
+block content
+  //- button.btn.btn-success(type='button') 添加
+  //- br
+  //- br
+  .col-lg-6
+    .input-group
+      input#search_input.form-control(type='text')
+      span.input-group-btn
+        #search_server.button.btn.btn-default(type='button') 查找
+        a.btn.btn-success(href='#addserverinfo', role='button', data-toggle='modal') 新增
+  #addserverinfo.modal.fade(aria-hidden='true', aria-labelledby='myModalLabel', role='dialog', tabindex='-1')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          #info
+            .alert
+                button.close(type='button')
+                div
+            .alert.alert-danger
+                button.close(type='button')
+                div
+            .alert.alert-success
+                button.close(type='button')
+                div
+          button.close(data-dismiss='modal', type='button')
+            span(aria-hidden='true') ×
+            span.sr-only Close
+          h3#myModalLabel.modal-title 添加服务器信息
+        .modal-body
+          form#f_serverinfo.form-horizontal(role='form', method='post')
+            .form-group
+              label.col-sm-2.control-label 机房
+              .col-sm-10
+                input#room_place.form-control(type='text', name='room_place')
+            .form-group
+              label.col-sm-2.control-label 机架号
+              .col-sm-10
+                input#cabinet_no.form-control(type='text', name='cabinet_no')
+            .form-group
+              label.col-sm-2.control-label 主机名
+              .col-sm-10
+                input#cabinet_no.form-control(type='text', name='host_name')
+            .form-group
+              label.col-sm-2.control-label 服务编码
+              .col-sm-10
+                input#sev_no.form-control(type='text', name='sev_no')
+            .form-group
+              label.col-sm-2.control-label 型号
+              .col-sm-10
+                select.form-control(name='type')
+                  option R310
+                  option R710
+                  option R720
+                  option 2950
+                  option 四子星
+                  option NX3100
+            .form-group
+              label.col-sm-2.control-label 机房编码
+              .col-sm-10
+                input#room_no.form-control(type='text', name='room_no')
+            .form-group
+              label.col-sm-2.control-label 控制卡IP
+              .col-sm-10
+                input#control_ip.form-control(type='text', name='control_ip')
+            .form-group
+              label.col-sm-2.control-label 20段IP
+              .col-sm-10
+                input#ip_20.form-control(type='text', name='ip_20')
+            .form-group
+              label.col-sm-2.control-label 30段IP
+              .col-sm-10
+                input#ip_30.form-control(type='text', name='ip_30')
+            .form-group
+              label.col-sm-2.control-label 电信IP
+              .col-sm-10
+                input#dx_ip.form-control(type='text', name='dx_ip')
+            .form-group
+              label.col-sm-2.control-label 联通IP
+              .col-sm-10
+                input#lt_ip.form-control(type='text', name='lt_ip')
+            .form-group
+              label.col-sm-2.control-label 操作系统
+              .col-sm-10
+                select.form-control(name='OS')
+                  option Debian 5
+                  option Debian 6(32bit)
+                  option Debian 6(64bit)
+                  option Windows 2003 SP2
+                  option Windows 2003 R2
+                  option Windows 2008 R2
+                  option Windows 2008 R2 Datacenter
+                  option Windows Storage 2008
+                  option VMware ESXi
+                  option Centos
+                  option 其他
+            .form-group
+              label.col-sm-2.control-label 内存大小
+              .col-sm-10
+                select.form-control(name='memory')
+                  option 4G
+                  option 8G
+                  option 16G
+                  option 32G
+                  option 64G
+                  option 其他
+            .form-group
+              label.col-sm-2.control-label 硬盘数量
+              .col-sm-10
+                select.form-control(name='disk')
+                  option 2x1T SAS
+                  option 4x1T SAS
+                  option 6x1T SAS
+                  option 2x500G SAS
+                  option 4x500G SAS
+                  option 6x500G SAS
+                  option 其他
+            .form-group
+              label.col-sm-2.control-label Raid卡
+              .col-sm-10
+                select.form-control(name='raid')
+                  option 1068E
+                  option H200
+                  option H700
+                  option 其他
+            .form-group
+              label.col-sm-2.control-label Raid级别
+              .col-sm-10
+                select.form-control(name='raid_level')
+                  option 1
+                  option 5
+                  option 10
+                  option 其他
+            .form-group
+              label.col-sm-2.control-label 网卡数量
+              .col-sm-10
+                input#network.form-control(type='text', name='network')
+            .form-group
+              label.col-sm-2.control-label 分类
+              .col-sm-10
+                select.form-control(name='kind')
+                  option nodejs
+                  option iis
+                  option apache
+                  option mysql
+                  option sqlserver
+                  option mongodb
+                  option 管理
+                  option 其他
+            .form-group
+              label.col-sm-2.control-label 功能
+              .col-sm-10
+                input#function.form-control(type='text', name='function')
+            .form-group
+              label.col-sm-2.control-label 状态
+              .col-sm-10
+                select.form-control(name='status')
+                  option 在用
+                  option 下架
+                  option 待用
+                  option 测试
+                  option 其他
+            .form-group
+              label.col-sm-2.control-label 备注
+              .col-sm-10
+                input#remark.form-control(type='text', name='remark')
+        .modal-footer
+          button.btn.btn-default(data-dismiss='modal', type='button') 关闭
+          button.btn.btn-success(type='button') 保存
+  ul#nav.nav.nav-tabs(role='tablist')
+    //- li.active
+    //-   a(data-toggle='tab', role='tab', href='#all_serverinfo') 所有
+    li.active
+      a(data-toggle='tab', role='tab', href='#H04-01') H04-01
+    li
+      a(data-toggle='tab', role='tab', href='#H04-06') H04-06
+    li
+      a(data-toggle='tab', role='tab', href='#H04-07') H04-07
+    li
+      a(data-toggle='tab', role='tab', href='#H04-09') H04-09
+    li
+      a(data-toggle='tab', role='tab', href='#H04-10') H04-10
+    li
+      a(data-toggle='tab', role='tab', href='#H10-07') H10-07
+    li
+      a(data-toggle='tab', role='tab', href='#all_search') 搜索结果
+  .tab-content
+    #H04-01.tab-pane.active
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.info
+            th 机房
+            th 机架号
+            th 主机名
+            th 服务编码
+            th 型号
+            th 机房编码
+            th 控制卡IP
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 操作系统
+            th 内存大小
+            th 硬盘数量
+            th Raid卡
+            th Raid级别
+            th 网卡数量
+            th 分类
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody
+          //- each info in infos
+            tr
+              td #{info.room_place}
+              td #{info.cabinet_no.toUpperCase()}
+              td #{info.host_name}
+              td #{info.sev_no.toUpperCase()}
+              td #{info.type}
+              td #{info.room_no.toUpperCase()}
+              td #{info.control_ip}
+              td #{info.ip_20}
+              td #{info.ip_30}
+              td #{info.dx_ip}
+              td #{info.lt_ip}
+              td #{info.OS}
+              td #{info.memory}
+              td #{info.disk.toUpperCase()}
+              td #{info.raid.toUpperCase()}
+              td #{info.raid_level}
+              td #{info.network}
+              td #{info.kind}
+              td #{info.function}
+              td#status #{info.status}
+              td #{info.remark}
+              td #{info.uptime}
+    #H04-06.tab-pane
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.info
+            th 机房
+            th 机架号
+            th 主机名
+            th 服务编码
+            th 型号
+            th 机房编码
+            th 控制卡IP
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 操作系统
+            th 内存大小
+            th 硬盘数量
+            th Raid卡
+            th Raid级别
+            th 网卡数量
+            th 分类
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody
+    #H04-07.tab-pane
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.info
+            th 机房
+            th 机架号
+            th 主机名
+            th 服务编码
+            th 型号
+            th 机房编码
+            th 控制卡IP
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 操作系统
+            th 内存大小
+            th 硬盘数量
+            th Raid卡
+            th Raid级别
+            th 网卡数量
+            th 分类
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody   
+    #H04-09.tab-pane
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.info
+            th 机房
+            th 机架号
+            th 主机名
+            th 服务编码
+            th 型号
+            th 机房编码
+            th 控制卡IP
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 操作系统
+            th 内存大小
+            th 硬盘数量
+            th Raid卡
+            th Raid级别
+            th 网卡数量
+            th 分类
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody
+    #H04-10.tab-pane
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.info
+            th 机房
+            th 机架号
+            th 主机名
+            th 服务编码
+            th 型号
+            th 机房编码
+            th 控制卡IP
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 操作系统
+            th 内存大小
+            th 硬盘数量
+            th Raid卡
+            th Raid级别
+            th 网卡数量
+            th 分类
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody
+    #H10-07.tab-pane
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.info
+            th 机房
+            th 机架号
+            th 主机名
+            th 服务编码
+            th 型号
+            th 机房编码
+            th 控制卡IP
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 操作系统
+            th 内存大小
+            th 硬盘数量
+            th Raid卡
+            th Raid级别
+            th 网卡数量
+            th 分类
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody
+    #all_search.tab-pane
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.info
+            th 机房
+            th 机架号
+            th 主机名
+            th 服务编码
+            th 型号
+            th 机房编码
+            th 控制卡IP
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 操作系统
+            th 内存大小
+            th 硬盘数量
+            th Raid卡
+            th Raid级别
+            th 网卡数量
+            th 分类
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody       
+  script(src='/stylesheets/jquery-1.8.3.min.js')
+  script(src='/stylesheets/bootstrap.js')
+  script(src='/javascripts/serverinfo.js')
+  script(src='/javascripts/main.js')
+  script(src='/javascripts/search.js')

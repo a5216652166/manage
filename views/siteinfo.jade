@@ -1,0 +1,130 @@
+extends index
+
+block content
+  //- button.btn.btn-success(type='button') 添加
+  //- br
+  //- br
+  .col-lg-6
+    .input-group
+      input.form-control(type='text')
+      span.input-group-btn
+        button.btn.btn-default(type='button') 查找
+        a.btn.btn-success(href='#addsiteinfo', role='button', data-toggle='modal') 新增
+  #addsiteinfo.modal.fade(aria-hidden='true', aria-labelledby='myModalLabel', role='dialog', tabindex='-1')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          #info
+            .alert
+                button.close(type='button')
+                div
+            .alert.alert-danger
+                button.close(type='button')
+                div
+            .alert.alert-success
+                button.close(type='button')
+                div
+          button.close(data-dismiss='modal', type='button')
+            span(aria-hidden='true') ×
+            span.sr-only Close
+          h3#myModalLabel.modal-title 添加站点信息
+        .modal-body
+          form#f_siteinfo.form-horizontal(role='form', method='post')
+            .form-group
+              label.col-sm-2.control-label 站点名
+              .col-sm-10
+                input#site_name.form-control(type='text', name='site_name')
+            .form-group
+              label.col-sm-2.control-label CDN
+              .col-sm-10
+                select.form-control(name='CDN')
+                  option 无加速
+                  option 网页加速
+                  option 网页CDN
+                  option 智能DNS
+            .form-group
+              label.col-sm-2.control-label 类型
+              .col-sm-10
+                select.form-control(name='type')
+                  option nodejs
+                  option iis
+            .form-group
+              label.col-sm-2.control-label 20段IP
+              .col-sm-10
+                input#ip_20.form-control(type='text', name='ip_20')
+            .form-group
+              label.col-sm-2.control-label 30段IP
+              .col-sm-10
+                input#ip_30.form-control(type='text', name='ip_30')
+            .form-group
+              label.col-sm-2.control-label 电信IP
+              .col-sm-10
+                input#dx_ip.form-control(type='text', name='dx_ip')
+            .form-group
+              label.col-sm-2.control-label 联通IP
+              .col-sm-10
+                input#lt_ip.form-control(type='text', name='lt_ip')
+            .form-group
+              label.col-sm-2.control-label 功能
+              .col-sm-10
+                input#function.form-control(type='text', name='function')
+            .form-group
+              label.col-sm-2.control-label 状态
+              .col-sm-10
+                select.form-control(name='status')
+                  option 已上线
+                  option 已下线
+                  option 已部署
+                  option 测试
+                  option 待部署
+            .form-group
+              label.col-sm-2.control-label 备注
+              .col-sm-10
+                input#remark.form-control(type='text', name='remark')
+        .modal-footer
+          button.btn.btn-default(data-dismiss='modal', type='button') 关闭
+          button.btn.btn-success(type='button') 保存
+  ul#nav.nav.nav-tabs(role='tablist')
+    //- li.active
+    //-   a(data-toggle='tab', role='tab', href='#all_serverinfo') 所有
+    li.active
+      a(data-toggle='tab', role='tab', href='#nodejs') Node JS
+    li
+      a(data-toggle='tab', role='tab', href='#iis') IIS
+  .tab-content
+    #nodejs.tab-pane.active
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.success
+            th 站点名
+            th CDN
+            th 类型
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody
+    #iis.tab-pane
+      table.table.table-hover.table-condensed.table-bordered
+        thead
+          tr.success
+            th 站点名
+            th CDN
+            th 类型
+            th 20段IP
+            th 30段IP
+            th 电信IP
+            th 联通IP
+            th 功能
+            th 状态
+            th 备注
+            th 操作时间
+        tbody
+  script(src='/stylesheets/jquery-1.8.3.min.js')
+  script(src='/stylesheets/bootstrap.js')
+  script(src='/javascripts/siteinfo.js')
+  script(src='/javascripts/main.js')

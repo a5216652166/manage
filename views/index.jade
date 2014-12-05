@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title Platform System
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+  body
+      //- h3.text-left(contenteditable='true') Platform System
+      div.container-fluid
+        //- #info
+        //-   .alert
+        //-       button.close(type='button') &times;
+        //-       div
+        //-   .alert.alert-danger
+        //-       button.close(type='button') &times;
+        //-       div
+        //-   .alert.alert-success
+        //-       button.close(type='button') &times;
+        //-       div
+        div.row-fluid
+          div.span12
+            ul.breadcrumb
+              li.active Platform System
+                //- a(href='http://127.0.0.1:3000') Platform System
+                //- span.divider 
+              li
+                a(href='http://127.0.0.1:3000/serverinfo') 服务器信息
+                span.divider 
+              li
+                a(href='http://127.0.0.1:3000/siteinfo') 站点信息
+                span.divider
+              li
+                a(href='http://127.0.0.1:3000/ipinfo') IP资源
+                span.divider 
+              li
+                a(href='http://127.0.0.1:3000/monitor') 监控系统
+                span.divider
+              li
+                a(href='http://127.0.0.1:3000/history') 操作记录
+                span.divider     
+        block content

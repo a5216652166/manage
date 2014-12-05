@@ -1,0 +1,13 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+.col-lg-6 {
+  width: 250px;
+}
+.table {
+  margin-top: 75px;
+}
